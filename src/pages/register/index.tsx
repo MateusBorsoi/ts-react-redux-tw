@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import imgLogo from "../../public/assets/img_logo.png";
+import Logo from '../../../public/assets/logo.png'
 import { useState } from "react";
 import { Userschema } from "@/validation/schemas/userSchema";
 import { toast } from "react-toastify";
-import ToastMsg from "./Toast/Toast";
+import ToastMsg from "../../components/Toast/Toast";
 import API from "@/axios/config";
 import { useDispatch } from "react-redux";
 
 const Register = () => {
-  const dispatch = useDispatch();
+ 
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -69,7 +69,7 @@ const Register = () => {
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <ToastMsg theme="colored" bar="false" />
-          <Image className="mx-auto h-10 w-auto" src={imgLogo} alt="logo" />
+          <Image className="mx-auto h-10 w-auto" src={Logo} alt="logo" />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Crie sua conta
           </h2>

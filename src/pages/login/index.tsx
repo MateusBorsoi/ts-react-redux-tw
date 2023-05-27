@@ -1,9 +1,9 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { login, logout } from "../redux/slices/AuthSlice";
-import { getAuthData } from "../redux/selectors/authSelector";
+import { useState } from "react";
+import { login, logout } from "../../redux/slices/AuthSlice";
+import { getAuthData } from "../../redux/selectors/authSelector";
 import Image from "next/image";
 import imgLogo from "../../public/assets/img_logo.png";
 
