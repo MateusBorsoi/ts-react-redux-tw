@@ -12,6 +12,8 @@ const UserSlice = createSlice({
   name: USER.USER_DATA,
   initialState,
   reducers: {
+
+    
     getUsersStart: (state) => {
       (state.loading = true), (state.error = null);
     },

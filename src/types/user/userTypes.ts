@@ -1,8 +1,10 @@
+
 export interface User {
   id: number;
   name: string;
   email: string;
   senha: string;
+  dataCriacao: Date;
 }
 
 export interface UserState {
@@ -10,3 +12,4 @@ export interface UserState {
   loading: boolean;
   error: string | null;
 }
+
