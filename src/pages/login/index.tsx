@@ -5,21 +5,20 @@ import { useState } from "react";
 import { login, logout } from "../../redux/slices/AuthSlice";
 import { getAuthData } from "../../redux/selectors/authSelector";
 import Image from "next/image";
-import imgLogo from "../../public/assets/img_logo.png";
-
-let Logo: any = imgLogo;
+import Logo from '../../../public/assets/img_logo.png'
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const getAuth = useSelector(getAuthData);
 
-let logo:any = Logo
 
   const dispatch = useDispatch();
 
   const handleLogin = () => {
     if (email) {
       const authData: any = { email: email };
+      
+
       dispatch(login(authData));
     }
   };
@@ -34,7 +33,7 @@ let logo:any = Logo
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto h-10 w-auto"
-            src={logo}
+            src={Logo}
             alt="logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

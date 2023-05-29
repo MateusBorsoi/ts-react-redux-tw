@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Logo from '../../../public/assets/logo.png'
+import Logo from '../../../public/assets/img_logo.png'
 import { useState } from "react";
 import { Userschema } from "@/validation/schemas/userSchema";
 import { toast } from "react-toastify";
