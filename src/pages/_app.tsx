@@ -2,11 +2,12 @@ import "../layouts/globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "@/redux/provider";
 import type { AppProps } from "next/app";
-import Navbar from "@/components/menu/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import Login from "./login";
 import Register from "./register";
 import PageNotFound from "./404";
-import Footer from "@/components/menu/Footer";
+import Footer from "@/components/layout/Footer";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
