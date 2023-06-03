@@ -5,6 +5,7 @@ import { useState } from "react";
 import { login, logout } from "../../redux/slices/AuthSlice";
 import { getAuthData } from "../../redux/selectors/authSelector";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 import Logo from '../../../public/assets/img_logo.png'
 
 const Login = () => {
@@ -94,6 +95,7 @@ const Login = () => {
             <div>
               <button
                 type="submit"
+               
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Entrar

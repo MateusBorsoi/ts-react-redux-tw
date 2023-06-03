@@ -1,8 +1,12 @@
-import { AuthState } from "../types/user/authTypes";
-import { UserState } from "../types/user/userTypes";
+import { ProductState } from "@/types/product/ProductTypes";
+import { AuthState } from "../types/user/AuthTypes";
+import { UserState } from "../types/user/UserTypes";
+import { CartState } from "@/types/cart/CartTypes";
 
 export interface RootState {
     auth: AuthState
-    user: UserState
+    user: UserState,
+    product: ProductState,
+    cart: CartState
 
 }

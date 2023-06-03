@@ -1,16 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import Logo from '../../../public/assets/img_logo.png'
+import Logo from "../../../public/assets/img_logo.png";
 import { useState } from "react";
 import { Userschema } from "@/validation/schemas/userSchema";
 import { toast } from "react-toastify";
 import ToastMsg from "../../components/Toast/Toast";
 import API from "@/axios/config";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 const Register = () => {
- 
+  const router = useRouter();
+
+  const authRedirect = () => {
+    router.push("/");
+  };
+
+  const redirectToLogin = () => {
+    router.push('/login')
+  }
+
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -31,27 +41,28 @@ const Register = () => {
       confirmaSenha,
     };
 
-
     async function requestRegister() {
       try {
-        const response = await API.post('/users', formData);
+        const response = await API.post("/users", formData);
         if (response.status === 200) {
-          toast.success(response.data.message)
+          toast.success(response.data.message);
+          setTimeout(() => {
+            authRedirect();
+          }, 2000);
         } else {
-          toast.error(response.data.message)
+          toast.error(response.data.message);
         }
-      } catch (error:any) {
+      } catch (error: any) {
         if (error.response) {
-          const errorMsg = error.response.data.message
-          toast.error(errorMsg)
+          const errorMsg = error.response.data.message;
+          toast.error(errorMsg);
         }
       }
     }
 
     try {
       await Userschema.validate(formData, { abortEarly: false });
-      requestRegister()
-     
+      requestRegister();
     } catch (validationErrors: any) {
       const errors: any = {};
 
@@ -177,6 +188,7 @@ const Register = () => {
             <div>
               <button
                 type="submit"
+               
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Enviar
@@ -187,7 +199,7 @@ const Register = () => {
           <p className="mt-10 text-center text-sm text-gray-500">
             Já possui uma conta ?
             <a
-              href="#"
+              onClick={redirectToLogin}
               className="font-semibold text-indigo-600 hover:text-indigo-500"
             >
               {" "}
