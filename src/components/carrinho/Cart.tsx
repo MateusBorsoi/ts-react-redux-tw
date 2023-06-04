@@ -9,12 +9,15 @@ import { Product } from "@/types/product/ProductTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { BsTrash3 } from "react-icons/bs";
+import {VscClose} from 'react-icons/vsc'
 import ToastMsg from "../Toast/Toast";
 import { toast } from "react-toastify";
 import Modal from "../layout/Modal";
 import { useState } from "react";
 
-const Cart = () => {
+const Cart = (props:any) => {
+  const {onClose} = props
+
   const [showModal, setShowModal] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<number>(0);
   const dispatch = useDispatch();
@@ -24,6 +27,7 @@ const Cart = () => {
     style: "currency",
     currency: "BRL",
   });
+
 
   const handleConfirm = (itemID: number): Promise<void> => {
     return new Promise((resolve, reject) => {
@@ -65,7 +69,9 @@ const Cart = () => {
   };
 
   return (
-    <div className="flex items-center content-center justify-center flex-col border-2 border-black w-48 h-52 p-2">
+    <div className="flex-col border-2 bg-black border-indigo-500 rounded-xl w-48 h-64 p-2 fixed top-40 right-0 m-4">
+      <button className="ml-36 text-white hover:text-indigo-500 text-lg "onClick={onClose}><VscClose/></button>
+      <div className="flex flex-col justify-center items-center content-center">
       {showModal && (
         <Modal
           titulo="Confirmar exclusão"
@@ -76,11 +82,11 @@ const Cart = () => {
         />
       )}
       <ToastMsg theme="colored" bar="false" closetime="1000" />
-      <p className="font-bold">Carrinho</p>
+      <p className="font-bold">Meu Carrinho</p>
 
       {cartItens.length < 1 && (
         <button
-          className="border-2 border-green-500 rounded-md  bg-white text-green-500 p-0.5"
+          className="border-2 border-indigo-500 rounded-md  bg-white text-indigo-500 p-0.5"
           onClick={handleAddToCart}
         >
           Adicionar ao Carrinho
@@ -97,7 +103,7 @@ const Cart = () => {
           <div className="text-center pb-4 flex flex-col items-center">
             <div className="border border-gray-400 h-12 w-20 flex itens-center justify-center">
               <button
-                className=" text-black hover:text-red-500 p-0.5"
+                className=" text-white hover:text-indigo-500 p-0.5"
                 onClick={() => handleRemoveFromCart(item.produto.id)}
               >
                 <BiMinus />
@@ -106,14 +112,14 @@ const Cart = () => {
                 {item.quantidade}
               </span>
               <button
-                className="text-black hover:text-green-500 p-0.5 "
+                className="text-white hover:text-indigo-500 p-0.5 "
                 onClick={handleAddToCart}
               >
                 <BiPlus />
               </button>
             </div>
             <button
-              className="text-white hover:text-red-600 pt-2 text-lg"
+              className="text-white hover:text-indigo-500 pt-2 text-lg"
               onClick={() => handleConfirm(item.produto.id)}
             >
               <BsTrash3 />
@@ -121,11 +127,12 @@ const Cart = () => {
           </div>
         </div>
       ))}
-      {cartTotal > 0 && (
-        <p className="border-2 p-2 border-black rounded-md">
+      {cartTotal > 0 ?  (
+        <p className="border-2 p-2 border-indigo-500 rounded-md">
           <span className="font-bold ">Total:</span> {valorTotal}
         </p>
-      )}
+      ): <span className="text-xs pt-5 text-indigo-500">Carrinho Vazio</span>}
+      </div>
     </div>
   );
 };

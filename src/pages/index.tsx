@@ -12,7 +12,6 @@ const Home = () => {
            <div className="border-2 h-3/4 w-3/4"></div>
         </div>
         <div className="flex-1 border-2">
-            <Cart/>
         </div>
         <div className="w-1/4 border-2">
             div 4
