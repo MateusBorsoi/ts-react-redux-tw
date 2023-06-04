@@ -7,8 +7,8 @@ import Register from "./register";
 import PageNotFound from "./404";
 import Footer from "@/components/layout/Footer";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
-
+import { store, persistor } from "@/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,17 +17,17 @@ export const metadata = {
   description: "Sistema Hasghy",
 };
 
-
-
 export default function MyApp({ Component, pageProps }: AppProps) {
-
-  const isAuthPage = Component === Login || Component === Register || Component === PageNotFound
+  const isAuthPage =
+    Component === Login || Component === Register || Component === PageNotFound;
 
   return (
     <Provider store={store}>
-      {!isAuthPage && (<Navbar/>)}
-      <Component {...pageProps} />
-      {!isAuthPage && (<Footer/>)}
+      <PersistGate loading={null} persistor={persistor}>
+        {!isAuthPage && <Navbar />}
+        <Component {...pageProps} />
+        {!isAuthPage && <Footer />}
+      </PersistGate>
     </Provider>
   );
 }

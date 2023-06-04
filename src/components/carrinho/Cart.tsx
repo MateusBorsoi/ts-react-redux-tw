@@ -15,8 +15,8 @@ import Modal from "../layout/Modal";
 import { useState } from "react";
 
 const Cart = () => {
-  const [showModal, setShowModal] = useState(false)
-  const [itemToDelete, setItemToDelete] = useState<number>(0)
+  const [showModal, setShowModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<number>(0);
   const dispatch = useDispatch();
   const cartItens = useSelector(selectCartItens);
   const cartTotal = useSelector(selectCartTotal);
@@ -25,11 +25,12 @@ const Cart = () => {
     currency: "BRL",
   });
 
-  const handleConfirm = (itemID: number) => {
-    setShowModal(true)
-    setItemToDelete(itemID)
-
-  }
+  const handleConfirm = (itemID: number): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      setShowModal(true);
+      setItemToDelete(itemID);
+    });
+  };
 
   const handleAddToCart = () => {
     const produto: Product = { id: 1, descricao: "Camiseta", preco: 140.99 };
@@ -38,26 +39,24 @@ const Cart = () => {
   };
 
   const handleRemoveFromCart = async (itemID: number) => {
-    
     const item = cartItens.find((item) => item.produto.id === itemID);
     if (item) {
       if (item.quantidade > 1) {
         dispatch(addItem({ produto: item.produto, quantidade: -1 }));
       } else {
-       await new Promise((resolve:any) => {
-         handleConfirm(itemID)
-        resolve()
-       }) 
-     await dispatch(removeItem(itemToDelete));
-       
+        try {
+          await handleConfirm(itemID);
+          dispatch(removeItem(itemToDelete));
+        } catch (error) {
+          toast.error("Erro ao remover item");
+        }
       }
     }
-   
   };
 
   const handleDeleteFromCart = (itemID: number) => {
     dispatch(removeItem(itemToDelete));
-    setShowModal(false)
+    setShowModal(false);
     toast.success("Produto removido com sucesso");
   };
 
@@ -66,17 +65,16 @@ const Cart = () => {
   };
 
   return (
-   
     <div className="flex items-center content-center justify-center flex-col border-2 border-black w-48 h-52 p-2">
-       {showModal && (
-      <Modal 
-      titulo = 'Confirmar exclusão'
-      texto = 'Deseja excluir o item do carrinho ?'
-      txtbtn = 'Confirmar'
-      onConfirm={handleDeleteFromCart}
-      onClose={() => setShowModal(false)}
-      />
-    )}
+      {showModal && (
+        <Modal
+          titulo="Confirmar exclusão"
+          texto="Deseja excluir o item do carrinho ?"
+          txtbtn="Confirmar"
+          onConfirm={handleDeleteFromCart}
+          onClose={() => setShowModal(false)}
+        />
+      )}
       <ToastMsg theme="colored" bar="false" closetime="1000" />
       <p className="font-bold">Carrinho</p>
 
