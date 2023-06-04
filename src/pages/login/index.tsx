@@ -3,14 +3,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login, logout } from "../../redux/slices/AuthSlice";
-import { getAuthData } from "../../redux/selectors/authSelector";
+import  {selectAuthStatus} from "../../redux/selectors/authSelector";
 import Image from "next/image";
 import { useRouter } from 'next/router';
 import Logo from '../../../public/assets/img_logo.png'
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const getAuth = useSelector(getAuthData);
+  const getAuth = useSelector(selectAuthStatus);
 
 
   const dispatch = useDispatch();

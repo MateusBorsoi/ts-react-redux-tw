@@ -106,7 +106,7 @@ const Register = () => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                 />
                 {formErro?.nome && (
-                  <p className="text-red-600 text-center">{formErro.nome}</p>
+                  <p className="text-red-600">{formErro.nome}</p>
                 )}
               </div>
             </div>
@@ -128,7 +128,7 @@ const Register = () => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                 />
                 {formErro?.email && (
-                  <p className="text-red-600 text-center">{formErro.email}</p>
+                  <p className="text-red-600">{formErro.email}</p>
                 )}
               </div>
             </div>
@@ -154,7 +154,7 @@ const Register = () => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                 />
                 {formErro?.senha && (
-                  <p className="text-red-600 text-center">{formErro.senha}</p>
+                  <p className="text-red-600">{formErro.senha}</p>
                 )}
               </div>
             </div>
@@ -178,7 +178,7 @@ const Register = () => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-2"
                 />
                 {formErro?.confirmaSenha && (
-                  <p className="text-red-600 text-center">
+                  <p className="text-red-600">
                     {formErro.confirmaSenha}
                   </p>
                 )}
@@ -198,9 +198,9 @@ const Register = () => {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Já possui uma conta ?
-            <a
+            <a 
               onClick={redirectToLogin}
-              className="font-semibold text-indigo-600 hover:text-indigo-500"
+              className="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer"
             >
               {" "}
               Entrar
