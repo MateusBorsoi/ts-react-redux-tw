@@ -1,3 +1,5 @@
+import Cart from "@/components/carrinho/Cart";
+
 const Home = () => {
   return (
     <div className="flex flex-col h-screen">
@@ -10,7 +12,7 @@ const Home = () => {
            <div className="border-2 h-3/4 w-3/4"></div>
         </div>
         <div className="flex-1 bg-gray-500">
-            div 3
+            <Cart/>
         </div>
         <div className="w-1/4 bg-blue-500">
             div 4

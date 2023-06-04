@@ -10,9 +10,7 @@ export interface Cart {
     total: number
 }
 
-
 export interface CartState {
-    carrinho: Cart | null,
-    loading: boolean,
-    erro: string | null
+    itens: CartItem[],
+    total: number
 }

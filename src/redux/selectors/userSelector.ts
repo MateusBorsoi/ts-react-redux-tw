@@ -1,7 +1,4 @@
-import { RootState } from "../rootState";
-import { User } from "../../types/user/UserTypes";
-import { createSelector } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-const getUsers = (state: RootState): User | null => state.user.userData;
-
-export const getUsersData = createSelector(getUsers, (usersData) => usersData);
+export const selectUserData = (state: RootState) => state.user.userData
+export const selectUserInfo = (state: RootState) => state.user
