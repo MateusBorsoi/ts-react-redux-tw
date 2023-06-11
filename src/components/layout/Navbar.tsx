@@ -9,7 +9,6 @@ import { selectCartItens } from "@/redux/selectors/cartSelector";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Cart from "../carrinho/Cart";
-
 const Navbar = () => {
   const ItensCarrinho = useSelector(selectCartItens);
   const [showCart, setShowCart] = useState(false);
@@ -36,9 +35,9 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between w-full h-44 bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 p-2">
       <div className="flex ">
-        <div className="w-20 h-20 text-white mb-16">
+        <div className="  text-white mb-16">
           <Link href={"/"}>
-            <Image src={Logo} width={100} height={100} alt="Logo" />
+            <Image src={Logo} width={150} height={100} alt="Logo" />
           </Link>
         </div>
       </div>
@@ -66,7 +65,7 @@ const Navbar = () => {
           </span>
         </div>
       )}
-        <span className="text-white text-3xl pb-1 hover:text-gray-400" onClick={handleToggleCart}>
+        <span className="text-white text-3xl pb-1 hover:text-gray-400 cursor-pointer " onClick={handleToggleCart}>
           <AiOutlineShoppingCart />
         </span>
         {showCart && <Cart onClose={handleToggleCart} />}
@@ -76,6 +75,11 @@ const Navbar = () => {
           <ul className="bg-black border border-indigo-500 rounded-lg p-4">
             <Link href={""}>
               <li className="hover:text-indigo-500 font-bold">Conta</li>
+            </Link>
+            <Link href={"/produtos"}>
+              <li className="hover:text-indigo-500 font-bold flex">
+                Produtos
+              </li>
             </Link>
             <Link href={""}>
               <li className="hover:text-indigo-500 font-bold flex">

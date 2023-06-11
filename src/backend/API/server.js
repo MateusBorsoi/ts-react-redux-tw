@@ -109,6 +109,96 @@ app.get("/users/:id", (req, res) => {
   });
 });
 
+const saveProdutsToFile = (produtos) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile("produtos.json", JSON.stringify(produtos), (err) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
+};
+
+const readUsersFromFile = () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile("produtos.json", "utf-8", (erro, data) => {
+      if (erro) {
+        console.log(erro);
+        reject(erro);
+        return;
+      }
+      const produtos = JSON.parse(data);
+      resolve(produtos);
+    });
+  });
+};
+
+app.post("/produtos", async (req, res) => {
+  const produto = req.body;
+
+  try {
+
+  let produtos = await readUsersFromFile();
+
+
+  const produtoID = produtos.length + 1;
+
+  produtos.push({
+    id: produtoID,
+    descricao: produto.descricao,
+    preco: produto.preco,
+    categoria: produto.categoria,
+    imagens: produto.imagens,
+    complemento: produto.complemento,
+    promocional: produto.promocional,
+    quantidade: produto.quantidade,
+  });
+  
+    await saveProdutsToFile(produtos);
+    res.status(200).json({ message: "Produto Cadastrado com sucesso!" });
+  } catch (err) {
+    res.status(500).json({ message: "Erro ao cadastrar produto!" });
+  }
+});
+
+app.get("/produtos", (req, res) => {
+  try {
+    const produtos = fs.readFileSync("produtos.json", "utf-8");
+    const produtosData = JSON.parse(produtos);
+    res.json(produtosData);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar produtos" });
+  }
+});
+
+app.get("/produtos/:id", (req, res) => {
+  const produtoID = parseInt(req.params.id);
+
+  fs.readFile("produtos.json", "utf-8", (err, data) => {
+    if (err) {
+      console.error("Erro na leitura do arquivo JSON", err);
+      res.status(500).json({ message: "Erro interno do servidor" });
+      return;
+    }
+    try {
+      const produtos = JSON.parse(data);
+      const produto = usuarios.find((produto) => produto.id === produtoID);
+
+      if (produto) {
+        res.json(produto);
+      } else {
+        res.status(404).json({ message: "Usuário não encontrado" });
+      }
+    } catch (error) {
+      console.error("Erro na verificação do arquivo JSON:", error);
+      res.status(500).json({ message: "Erro interno do servidor" });
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });

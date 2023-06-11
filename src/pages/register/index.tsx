@@ -80,12 +80,18 @@ const Register = () => {
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <ToastMsg theme="colored" bar="false" closetime="5000"/>
-          <Image className="mx-auto h-10 w-auto" src={Logo} alt="logo" />
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <Image
+            className="mx-auto w-auto"
+            src={Logo}
+            alt="logo"
+            width={150}
+            height={100}
+          />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Crie sua conta
-          </h2>
+            Crie sua Conta </h2>
         </div>
-
+        </div>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={onSubmit}>
             <div>

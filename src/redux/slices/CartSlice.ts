@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { CART_DATA } from "../action-types/CartActionTypes";
 import { CartItem, CartState } from "@/types/cart/CartTypes";
 
 const initialState: CartState = {
@@ -8,7 +7,7 @@ const initialState: CartState = {
 }
 
 const cartSlice = createSlice({
-    name: CART_DATA.CART,
+    name: 'cart',
     initialState,
     reducers: {
         addItem: (state, action: PayloadAction<CartItem>) => {

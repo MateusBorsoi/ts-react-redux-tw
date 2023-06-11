@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "descricao": "sdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasd",
+    "preco": "55",
+    "categoria": "Mexico",
+    "imagens": [{}],
+    "complemento": "sdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasd",
+    "promocional": "55",
+    "quantidade": "55"
+  },
+  {
+    "id": 2,
+    "descricao": "sdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasd",
+    "preco": "55",
+    "categoria": "Mexico",
+    "imagens": [{}],
+    "complemento": "sdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasd",
+    "promocional": "55",
+    "quantidade": "55"
+  },
+  {
+    "id": 3,
+    "descricao": "sdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasd",
+    "preco": "55",
+    "categoria": "Mexico",
+    "imagens": [{}],
+    "complemento": "sdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasdsdasdasdasdasdasdasdasd",
+    "promocional": "55",
+    "quantidade": "55"
+  }
+]

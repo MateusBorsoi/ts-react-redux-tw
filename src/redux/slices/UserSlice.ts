@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User, UserState } from "../../types/user/UserTypes";
-import { USER } from "../action-types/UserActionTypes";
+
 
 const initialState: UserState = {
   userData: null,
@@ -9,7 +9,7 @@ const initialState: UserState = {
 };
 
 const UserSlice = createSlice({
-  name: USER.USER_DATA,
+  name: 'user',
   initialState,
   reducers: {
 
