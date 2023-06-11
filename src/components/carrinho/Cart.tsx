@@ -73,6 +73,7 @@ const Cart = (props: any) => {
     dispatch(removeItem(itemToDelete));
     setShowModal(false);
     toast.success("Produto removido com sucesso");
+    
   };
 
   const handleClearCart = () => {

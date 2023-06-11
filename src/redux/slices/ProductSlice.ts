@@ -2,35 +2,19 @@ import { Product, ProductState } from "@/types/product/ProductTypes";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: ProductState = {
-    produtos: [],
-    loading: false,
-    error: null
-}
+  produtos: [],
+};
 
 const ProducSlice = createSlice({
-  name: 'product',
+  name: "product",
   initialState,
   reducers: {
-
-    
-    getProducIniciall: (state) => {
-      (state.loading = true), (state.error = null);
-    },
-
     getProducts: (state, action: PayloadAction<Product[]>) => {
-      (state.loading = false), (state.produtos = action.payload);
-    },
-
-    getProductsFailuce: (state, action: PayloadAction<string>) => {
-      (state.loading = false), (state.error = action.payload);
+      state.produtos = action.payload;
     },
   },
-
-
 });
 
-export const { getProducIniciall, getProducts, getProductsFailuce } =
-ProducSlice.actions;
+export const { getProducts } = ProducSlice.actions;
 
 export default ProducSlice.reducer;
-

@@ -17,7 +17,7 @@ export const metadata = {
   description: "Sistema Hasghy",
 };
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const isAuthPage =
     Component === Login || Component === Register || Component === PageNotFound;
 
@@ -31,3 +31,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </Provider>
   );
 }
+
+export default App
