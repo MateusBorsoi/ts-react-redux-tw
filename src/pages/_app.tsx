@@ -9,6 +9,7 @@ import Footer from "@/components/layout/Footer";
 import { Provider } from "react-redux";
 import { store, persistor } from "@/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import ToastMsg from "@/components/Toast/Toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {!isAuthPage && <Navbar />}
+        <ToastMsg theme="light" bar="false" closetime="1000" />
         <Component {...pageProps} />
         {!isAuthPage && <Footer />}
       </PersistGate>

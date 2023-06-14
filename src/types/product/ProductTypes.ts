@@ -3,10 +3,10 @@ export interface Product {
   descricao: string;
   preco: number;
   categoria: string;
-  imagens: string[] | null;
+  imagens: string;
   complemento: string;
-  promocional: number | null;
-  quantidade: number | null;
+  promocional: number;
+  quantidade: number;
 }
 
 export interface ProductState {

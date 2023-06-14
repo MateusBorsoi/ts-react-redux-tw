@@ -1,4 +1,3 @@
-import Produtos from "@/pages/produtos";
 import {
   selectCartItens,
   selectCartTotal,
@@ -10,10 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { BsTrash3 } from "react-icons/bs";
 import { VscClose } from "react-icons/vsc";
-import ToastMsg from "../Toast/Toast";
 import { toast } from "react-toastify";
 import Modal from "../layout/Modal";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Cart = (props: any) => {
   const { onClose } = props;
@@ -47,12 +46,6 @@ const Cart = (props: any) => {
     });
   };
 
-  const handleAddToCart = () => {
-    const produto: Product = { id: 1, descricao: "Camiseta", preco: 140.99 };
-    const ItemCarrinho: CartItem = { produto, quantidade: 1 };
-    dispatch(addItem(ItemCarrinho));
-  };
-
   const handleRemoveFromCart = async (itemID: number) => {
     const item = cartItens.find((item) => item.produto.id === itemID);
     if (item) {
@@ -69,11 +62,35 @@ const Cart = (props: any) => {
     }
   };
 
+  const AddItemToCart = (
+    id: number,
+    descricao: string,
+    preco: number,
+    categoria: string,
+    imagens: string,
+    complemento: string,
+    promocional: number,
+    quantidade: number
+  ) => {
+    const produto: Product = {
+      id: id,
+      descricao: descricao,
+      preco: preco,
+      categoria: categoria,
+      imagens: imagens,
+      complemento: complemento,
+      promocional: promocional,
+      quantidade: quantidade,
+    };
+
+    const ItemCarrinho: CartItem = { produto, quantidade: 1 };
+    dispatch(addItem(ItemCarrinho));
+  };
+
   const handleDeleteFromCart = (itemID: number) => {
     dispatch(removeItem(itemToDelete));
     setShowModal(false);
     toast.success("Produto removido com sucesso");
-    
   };
 
   const handleClearCart = () => {
@@ -82,13 +99,15 @@ const Cart = (props: any) => {
 
   return (
     <div className="cart opacity-0">
-      <div className="flex-col border-4 bg-black border-indigo-500 rounded-xl w-72 h-3/4 p-2 absolute top-10 right-0 m-4 ">
-        <button
-          className="ml-60 text-white hover:text-indigo-500 text-lg "
-          onClick={onClose}
-        >
-          <VscClose />
-        </button>
+      <div className="flex-col border-4 bg-black border-indigo-500 rounded-xl w-1/4 h-full absolute top-0 right-0  overflow-scroll overflow-x-hidden p-4">
+        <div className="flex justify-end">
+          <button
+            className="self-end text-white hover:text-indigo-500 text-lg "
+            onClick={onClose}
+          >
+            <VscClose />
+          </button>
+        </div>
         <div className="flex flex-col justify-center items-center content-center">
           {showModal && (
             <Modal
@@ -99,26 +118,26 @@ const Cart = (props: any) => {
               onClose={() => setShowModal(false)}
             />
           )}
-          <ToastMsg theme="colored" bar="false" closetime="1000" />
+
           <p className="font-bold">Meu Carrinho</p>
-
-          {cartItens.length < 1 && (
-            <button
-              className="border-2 border-indigo-500 rounded-md  bg-white text-indigo-500 p-0.5"
-              onClick={handleAddToCart}
-            >
-              Adicionar ao Carrinho
-            </button>
-          )}
           {cartItens.map((item) => (
-            <div key={item.produto.id}>
+            <div key={item.produto.id} className="flex flex-col itens-center justify-center content-center">
+              <div className="flex ">
               <p className="pb-2">
-                <span className="bg-blue-400 font-bold rounded-md">
-                  Produto: {`${item.produto.id} - ${item.produto.descricao}`}
+                <span className="font-bold rounded-md text-indigo-500">
+                {`${item.produto.id} - ${item.produto.descricao}`}
                 </span>
+                
+                  <Image
+                    src={item.produto.imagens}
+                    alt="ImagemProduto"
+                    width={100}
+                    height={100}
+                  />
+                
               </p>
-
-              <div className="text-center pb-4 flex flex-col items-center">
+</div>
+              <div className="text-center  flex justify-center content-center items-center">
                 <div className="border border-indigo-600 h-10 w-20 flex itens-center justify-center">
                   <button
                     className=" text-white hover:text-indigo-500 p-0.5"
@@ -131,13 +150,24 @@ const Cart = (props: any) => {
                   </span>
                   <button
                     className="text-white hover:text-indigo-500 p-0.5 "
-                    onClick={handleAddToCart}
+                    onClick={() =>
+                      AddItemToCart(
+                        item.produto.id,
+                        item.produto.descricao,
+                        item.produto.preco,
+                        item.produto.categoria,
+                        item.produto.imagens,
+                        item.produto.complemento,
+                        item.produto.promocional,
+                        item.produto.quantidade
+                      )
+                    }
                   >
                     <BiPlus />
                   </button>
                 </div>
                 <button
-                  className="text-white hover:text-indigo-500 pt-2 text-lg"
+                  className="text-white hover:text-indigo-500 pl-2 text-lg"
                   onClick={() => handleConfirm(item.produto.id)}
                 >
                   <BsTrash3 />
