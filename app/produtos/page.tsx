@@ -1,8 +1,12 @@
+
+'use client'
+
 import API from "@/axios/config";
 import ToastMsg from "@/components/Toast/Toast";
 import { ProductSchema } from "@/validation/schemas/productSchema";
 import { useState } from "react";
 import { toast } from "react-toastify";
+
 
 const Produtos = () => {
   const [descricao, setDescricao] = useState<string>("");

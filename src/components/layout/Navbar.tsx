@@ -1,3 +1,5 @@
+'use client'
+
 import Logo from "../../../public/assets/img_logo.png";
 import { BsSearch } from "react-icons/bs";
 import Image from "next/image";

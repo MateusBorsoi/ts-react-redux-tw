@@ -1,4 +1,7 @@
 
+'use client'
+
+import Btnp from "@/components/layout/BtnP";
 import { getProdutos } from "@/data/getProdutos";
 import { addItem } from "@/redux/slices/CartSlice";
 import { CartItem } from "@/types/cart/CartTypes";
@@ -18,6 +21,7 @@ export const getServerSideProps = async (context: any) => {
 
 
 const Home = ({ dados }: any) => {
+  console.log(dados)
   const dispatch = useDispatch();
 
   const AddItemToCart = (
@@ -86,7 +90,9 @@ const Home = ({ dados }: any) => {
           ))}
         </div>
 
-        <div className="w-1/4 border-2">DIV4</div>
+        <div className="w-1/4 border-2">
+          <Btnp texto="Botão da letícia (CUD)"/>
+        </div>
       </div>
 
       <div className="h-1/5 border-2"></div>

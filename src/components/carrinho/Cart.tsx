@@ -99,7 +99,10 @@ const Cart = (props: any) => {
 
   return (
     <div className="cart opacity-0">
-      <div className="flex-col border-4 bg-black border-indigo-500 rounded-xl w-1/4 h-full absolute top-0 right-0  overflow-scroll overflow-x-hidden p-4">
+      <div
+        className="flex-col border-4 bg-black border-indigo-500 rounded-xl w-1/4 h-full absolute top-0 right-0  overflow-scroll overflow-x-hidden p-4"
+        id="scroll-cart"
+      >
         <div className="flex justify-end">
           <button
             className="self-end text-white hover:text-indigo-500 text-lg "
@@ -121,22 +124,24 @@ const Cart = (props: any) => {
 
           <p className="font-bold">Meu Carrinho</p>
           {cartItens.map((item) => (
-            <div key={item.produto.id} className="flex flex-col itens-center justify-center content-center">
+            <div
+              key={item.produto.id}
+              className="flex flex-col itens-center justify-center content-center"
+            >
               <div className="flex ">
-              <p className="pb-2">
-                <span className="font-bold rounded-md text-indigo-500">
-                {`${item.produto.id} - ${item.produto.descricao}`}
-                </span>
-                
+                <p className="pb-2">
+                  <span className="font-bold rounded-md text-indigo-500">
+                    {`${item.produto.id} - ${item.produto.descricao}`}
+                  </span>
+
                   <Image
                     src={item.produto.imagens}
                     alt="ImagemProduto"
                     width={100}
                     height={100}
                   />
-                
-              </p>
-</div>
+                </p>
+              </div>
               <div className="text-center  flex justify-center content-center items-center">
                 <div className="border border-indigo-600 h-10 w-20 flex itens-center justify-center">
                   <button

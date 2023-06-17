@@ -1,14 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "../../../public/assets/img_logo.png";
+import Logo from '../../public/assets/img_logo.png'
 import { useState } from "react";
 import { Userschema } from "@/validation/schemas/userSchema";
 import { toast } from "react-toastify";
-import ToastMsg from "../../components/Toast/Toast";
+import ToastMsg from "@/components/Toast/Toast";
 import API from "@/axios/config";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"
 
 const Register = () => {
   const router = useRouter();

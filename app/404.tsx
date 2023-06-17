@@ -1,7 +1,8 @@
 import Image from "next/image";
-import Img404 from '../../public/assets/404.png'
-import ImgFundo from '../../public/assets/Group.png'
-import { useRouter } from 'next/router';
+import Img404 from '../public/assets/404.png'
+import ImgFundo from '../public/assets/Group.png'
+import { useRouter } from "next/navigation";
+
 
 const PageNotFound = () => {
     
