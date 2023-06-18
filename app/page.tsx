@@ -1,24 +1,20 @@
+'use client'
 
-import { getProdutos } from "@/data/getProdutos";
+
+import { dataPromise } from "@/data/getProdutos";
 import { addItem } from "@/redux/slices/CartSlice";
 import { CartItem } from "@/types/cart/CartTypes";
 import { Product } from "@/types/product/ProductTypes";
 import Image from "next/image";
+import { use } from "react";
 import { useDispatch } from "react-redux";
 
-export const getServerSideProps = async (context: any) => {
-  const data = await getProdutos();
 
-  return {
-    props: {
-      dados: data,
-    },
-  };
-};
+const Home = async () => {
+  const data = use(dataPromise)
 
-
-const Home = ({ dados }: any) => {
   const dispatch = useDispatch();
+  
 
   const AddItemToCart = (
     id: number,
@@ -56,7 +52,7 @@ const Home = ({ dados }: any) => {
           <div className="border-2 h-3/4 w-3/4"></div>
         </div>
         <div className="flex-1 border-2 flex">
-          {dados?.map((produto: any) => (
+          {data?.map((produto: any) => (
             <div key={produto.id}>
               <div className="w-64 border-2 h-56 flex flex-col itens-center content-center justify-center text-center">
                 <p className="text-black bg-indigo-500 border-2 shadow-md">{produto.descricao}</p>
@@ -86,7 +82,9 @@ const Home = ({ dados }: any) => {
           ))}
         </div>
 
-        <div className="w-1/4 border-2">DIV4</div>
+        <div className="w-1/4 border-2">
+         
+        </div>
       </div>
 
       <div className="h-1/5 border-2"></div>

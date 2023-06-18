@@ -1,3 +1,5 @@
+'use client'
+
 import { combineReducers } from "@reduxjs/toolkit";
 import AuthReducer from "./slices/AuthSlice";
 import UserReducer from "./slices/UserSlice";

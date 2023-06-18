@@ -1,15 +1,16 @@
+"use client";
+
 import { configureStore } from "@reduxjs/toolkit";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "./rootReducers";
 
-
 const createNoopStorage = () => {
   return {
-    getItem(_key:string) {
+    getItem(_key: string) {
       return Promise.resolve(null);
     },
-    setItem(_key:string, value:string) {
+    setItem(_key: string, value: string) {
       return Promise.resolve(value);
     },
     removeItem(_key: string) {
@@ -18,7 +19,10 @@ const createNoopStorage = () => {
   };
 };
 
-const storage = typeof window !== "undefined" ? createWebStorage("local") : createNoopStorage();
+const storage =
+  typeof window !== "undefined"
+    ? createWebStorage("local")
+    : createNoopStorage();
 
 const persistConfig = {
   key: "root",
@@ -29,11 +33,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: true,
       },
+      devTools: process.env.NODE_ENV !== "production",
     }),
 });
 

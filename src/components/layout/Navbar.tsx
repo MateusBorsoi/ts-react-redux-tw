@@ -1,3 +1,5 @@
+'use client'
+
 import Logo from "../../../public/assets/img_logo.png";
 import { BsSearch } from "react-icons/bs";
 import Image from "next/image";
@@ -49,7 +51,7 @@ const Navbar = () => {
             className="px-3 py-4 placeholder:text-indigo-600 text-slate-600 relative rounded-lg bg-white  text-base border-2 shadow outline-none focus:outline-none focus:ring ring-indigo-600 w-full pr-10"
           />
           <span className="z-10 leading-snug font-normal text-center text-indigo-600 absolute bg-transparent rounded text-lg items-center justify-center w-8 right-0 pr-3 py-5">
-            <Link href={""}>
+            <Link href={"/"}>
               <BsSearch />
             </Link>
           </span>
@@ -73,7 +75,7 @@ const Navbar = () => {
       <div className="w-16 h-16 mb-28 text-white flex flex-col items-center content-center justify-center">
         <DropDown buttonLabel={userIcon} placement="bottom-start">
           <ul className="bg-black border border-indigo-500 rounded-lg p-4">
-            <Link href={""}>
+            <Link href={"/"}>
               <li className="hover:text-indigo-500 font-bold">Conta</li>
             </Link>
             <Link href={"/produtos"}>
@@ -81,7 +83,7 @@ const Navbar = () => {
                 Produtos
               </li>
             </Link>
-            <Link href={""}>
+            <Link href={"/"}>
               <li className="hover:text-indigo-500 font-bold flex">
                 Carrinho
                 <span className="pt-1 pr-4 mr-2">{notificationIcon}</span>
@@ -91,7 +93,7 @@ const Navbar = () => {
               {" "}
               <li className="h-1 w-11/12 bg-indigo-500 lg:w-1/3"></li>
             </p>
-            <Link href={""}>
+            <Link href={"/"}>
               <li className="hover:text-indigo-500 font-bold">Desconectar</li>
             </Link>
           </ul>
