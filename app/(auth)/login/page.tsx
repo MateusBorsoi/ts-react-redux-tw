@@ -2,10 +2,10 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { login, logout } from '../../src/redux/slices/AuthSlice'
 import Image from "next/image";
-import Logo from '../../public/assets/img_logo.png'
+import Logo from '../../../public/assets/img_logo.png'
 import { selectAuthStatus } from "@/redux/selectors/authSelector";
+import { login } from "@/redux/slices/AuthSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");

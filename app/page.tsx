@@ -1,7 +1,5 @@
-
 'use client'
 
-import Btnp from "@/components/layout/BtnP";
 import { getProdutos } from "@/data/getProdutos";
 import { addItem } from "@/redux/slices/CartSlice";
 import { CartItem } from "@/types/cart/CartTypes";
@@ -34,7 +32,7 @@ const Home = ({ dados }: any) => {
     promocional: number,
     quantidade: number
   ) => {
-  
+
     const produto: Product = {
       id: id,
       descricao: descricao,
@@ -45,8 +43,8 @@ const Home = ({ dados }: any) => {
       promocional: promocional,
       quantidade: quantidade,
     };
-  
-  
+
+
     const ItemCarrinho: CartItem = { produto, quantidade: 1 };
     dispatch(addItem(ItemCarrinho));
   }
@@ -65,9 +63,9 @@ const Home = ({ dados }: any) => {
               <div className="w-64 border-2 h-56 flex flex-col itens-center content-center justify-center text-center">
                 <p className="text-black bg-indigo-500 border-2 shadow-md">{produto.descricao}</p>
                 <p>{produto.categoria}</p>
-                <div className="self-center"><Image src={produto.imagens} alt="ImagemProduto" width={100} height={100}/> </div>
+                <div className="self-center"><Image src={produto.imagens} alt="ImagemProduto" width={100} height={100} /> </div>
                 <p className="font-bold text-lg">{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.preco)}</p>
-          
+
 
                 <button className="text-indigo-500 text-lg font-bold hover:underline"
                   onClick={() =>
@@ -91,7 +89,7 @@ const Home = ({ dados }: any) => {
         </div>
 
         <div className="w-1/4 border-2">
-          <Btnp texto="Botão da letícia (CUD)"/>
+          div2
         </div>
       </div>
 
