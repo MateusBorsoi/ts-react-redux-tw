@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import Modal from "../layout/Modal";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { AddItemToCart } from "@/data/addCarrinho";
 
 const Cart = (props: any) => {
   const { onClose } = props;
@@ -62,30 +63,7 @@ const Cart = (props: any) => {
     }
   };
 
-  const AddItemToCart = (
-    id: number,
-    descricao: string,
-    preco: number,
-    categoria: string,
-    imagens: string,
-    complemento: string,
-    promocional: number,
-    quantidade: number
-  ) => {
-    const produto: Product = {
-      id: id,
-      descricao: descricao,
-      preco: preco,
-      categoria: categoria,
-      imagens: imagens,
-      complemento: complemento,
-      promocional: promocional,
-      quantidade: quantidade,
-    };
-
-    const ItemCarrinho: CartItem = { produto, quantidade: 1 };
-    dispatch(addItem(ItemCarrinho));
-  };
+ 
 
   const handleDeleteFromCart = (itemID: number) => {
     dispatch(removeItem(itemToDelete));

@@ -6,3 +6,5 @@
   }
 
 export const dataPromise = getProdutos()
+
+

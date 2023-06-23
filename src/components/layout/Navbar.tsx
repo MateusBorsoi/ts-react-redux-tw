@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className="flex ">
         <div className="  text-white mb-16">
           <Link href={"/"}>
-            <Image src={Logo} width={150} height={100} alt="Logo" />
+            <Image src={Logo} width={150} height={100} alt="Logo" className="hover:rotate-6"/>
           </Link>
         </div>
       </div>
