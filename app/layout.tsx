@@ -1,4 +1,4 @@
-"use client";
+ 
 import React from "react";
 import ToastMsg from "@/components/Toast/Toast";
 import { Providers } from "@/Providers/ContextProvider/Provider";

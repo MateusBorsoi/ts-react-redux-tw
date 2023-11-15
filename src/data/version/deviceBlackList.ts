@@ -1,0 +1,1 @@
+export const blackListDevices = ['AppleWebKit/605.1.15', 'Safari/604.1']

@@ -7,6 +7,7 @@ const app = express();
 const port = 5000;
 
 app.use((req, res, next) => {
+  
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -140,23 +141,21 @@ app.post("/produtos", async (req, res) => {
   const produto = req.body;
 
   try {
+    let produtos = await readUsersFromFile();
 
-  let produtos = await readUsersFromFile();
+    const produtoID = produtos.length + 1;
 
+    produtos.push({
+      id: produtoID,
+      descricao: produto.descricao,
+      preco: produto.preco,
+      categoria: produto.categoria,
+      imagens: produto.imagens,
+      complemento: produto.complemento,
+      promocional: produto.promocional,
+      quantidade: produto.quantidade,
+    });
 
-  const produtoID = produtos.length + 1;
-
-  produtos.push({
-    id: produtoID,
-    descricao: produto.descricao,
-    preco: produto.preco,
-    categoria: produto.categoria,
-    imagens: produto.imagens,
-    complemento: produto.complemento,
-    promocional: produto.promocional,
-    quantidade: produto.quantidade,
-  });
-  
     await saveProdutsToFile(produtos);
     res.status(200).json({ message: "Produto Cadastrado com sucesso!" });
   } catch (err) {
@@ -184,7 +183,6 @@ app.get("/produtos/:id", (req, res) => {
       return;
     }
     try {
-      const produtos = JSON.parse(data);
       const produto = usuarios.find((produto) => produto.id === produtoID);
 
       if (produto) {

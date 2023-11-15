@@ -63,3 +63,18 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-slider-runnable-track {
   background-color: black;
 }
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+ 
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+

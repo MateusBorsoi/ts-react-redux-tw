@@ -1,5 +1,4 @@
-
-'use client'
+"use client";
 
 import API from "@/axios/config";
 import ToastMsg from "@/components/Toast/Toast";
@@ -7,15 +6,14 @@ import { ProductSchema } from "@/validation/schemas/productSchema";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-
 const Produtos = () => {
   const [descricao, setDescricao] = useState<string>("");
   const [complemento, setComplemento] = useState<string>("");
   const [imagens, setImagens] = useState<string | null>(null);
   const [categoria, setCategoria] = useState<string>("");
-  const [preco, setPreco] = useState<number>();
-  const [quantidade, setQuantidade] = useState<number>();
-  const [promocional, setPromocional] = useState<number>();
+  const [preco, setPreco] = useState<number | string>();
+  const [quantidade, setQuantidade] = useState<number | string>();
+  const [promocional, setPromocional] = useState<number | string>();
   const [formErro, setFormErros] = useState({
     descricao: "",
     preco: "",
@@ -25,15 +23,19 @@ const Produtos = () => {
     quantidade: "",
   });
 
-  const onChangeDescricao = (event: any) => {
+  const onChangeDescricao = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescricao(event.target.value);
   };
 
-  const onChangeComplemento = (event: any) => {
+  const onChangeComplemento = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setComplemento(event.target.value);
   };
 
-  const onChangeImagens = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeImagens = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
       try {
@@ -45,43 +47,40 @@ const Produtos = () => {
     }
   };
 
-  const onChangeCategoria = (event: any) => {
+  const onChangeCategoria = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoria(event.target.value);
   };
 
-  const onChangePreco = (event: any) => {
+  const onChangePreco = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPreco(event.target.value);
   };
 
-  const onChangePromocional = (event: any) => {
+  const onChangePromocional = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPromocional(event.target.value);
   };
 
-  const onChangeQuantidade = (event: any) => {
+  const onChangeQuantidade = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuantidade(event.target.value);
   };
 
-
-  const convertToBase64 = async (file:File) => {
+  const convertToBase64 = async (file: File) => {
     return new Promise<string>((resolve, reject) => {
-      const reader = new FileReader()
+      const reader = new FileReader();
 
       reader.onload = () => {
-        const base64Img = reader.result
-        if (typeof base64Img === 'string') {
-        resolve(base64Img) 
-      } else {
-        reject(new Error('Erro ao converter imagem'))
-      }
-    }
+        const base64Img = reader.result;
+        if (typeof base64Img === "string") {
+          resolve(base64Img);
+        } else {
+          reject(new Error("Erro ao converter imagem"));
+        }
+      };
       reader.onerror = (error) => {
-        reject(error)
-      }
-      reader.readAsDataURL(file)
-    })
-  }
-
-
+        reject(error);
+      };
+      reader.readAsDataURL(file);
+    });
+  };
 
   const onSubmit = async (event: any) => {
     event.preventDefault();
@@ -96,7 +95,6 @@ const Produtos = () => {
     };
 
     async function requestCadastro() {
-
       try {
         const response = await API.post("/produtos", formData);
         if (response.status === 200) {

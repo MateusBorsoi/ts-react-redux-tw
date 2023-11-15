@@ -1,4 +1,4 @@
-"use client";
+
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AuthData, AuthState } from "../../types/user/AuthTypes";

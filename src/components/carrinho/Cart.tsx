@@ -3,8 +3,6 @@ import {
   selectCartTotal,
 } from "@/redux/selectors/cartSelector";
 import { addItem, clearCart, removeItem } from "@/redux/slices/CartSlice";
-import { CartItem } from "@/types/cart/CartTypes";
-import { Product } from "@/types/product/ProductTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { BsTrash3 } from "react-icons/bs";
@@ -63,8 +61,6 @@ const Cart = (props: any) => {
     }
   };
 
- 
-
   const handleDeleteFromCart = (itemID: number) => {
     dispatch(removeItem(itemToDelete));
     setShowModal(false);
@@ -78,7 +74,7 @@ const Cart = (props: any) => {
   return (
     <div className="cart opacity-0">
       <div
-        className="flex-col border-4 bg-black border-indigo-500 rounded-xl w-1/4 h-full absolute top-0 right-0  overflow-scroll overflow-x-hidden p-4"
+        className="flex-col border-4 bg-black border-indigo-500 w-1/4 h-full absolute top-0 right-0  overflow-x-hidden p-4"
         id="scroll-cart"
       >
         <div className="flex justify-end">
@@ -89,7 +85,7 @@ const Cart = (props: any) => {
             <VscClose />
           </button>
         </div>
-        <div className="flex flex-col justify-center items-center content-center">
+        <div className="flex flex-col justify-center items-center content-center overflow-scroll ">
           {showModal && (
             <Modal
               titulo="Confirmar exclusão"

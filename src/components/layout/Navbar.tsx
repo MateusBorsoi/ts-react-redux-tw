@@ -89,6 +89,11 @@ const Navbar = () => {
                 <span className="pt-1 pr-4 mr-2">{notificationIcon}</span>
               </li>
             </Link>
+            <Link href={"/cidades"}>
+              <li className="hover:text-indigo-500 font-bold flex">
+                Cidades
+              </li>
+            </Link>
             <p className="py-4">
               {" "}
               <li className="h-1 w-11/12 bg-indigo-500 lg:w-1/3"></li>

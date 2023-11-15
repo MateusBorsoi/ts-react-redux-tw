@@ -1,7 +1,7 @@
 "use client";
 
 import { getCidade } from "@/data/FunctionsUteis";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const Cidades = () => {
   const [cep, setCep] = useState<any>(null);
@@ -34,7 +34,9 @@ const Cidades = () => {
           <input
             type="number"
             className="w-[300px] rounded-lg bg-indigo-200 border-2 border-black overflow-hidden pl-2"
-            onChange={(e: any) => setCep(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setCep(e.target.value)
+            }
           />
           <button
             className="px-2 border-2 border-black rounded-lg font-bold bg-indigo-200 hover:bg-indigo-600 ml-2"
@@ -43,24 +45,33 @@ const Cidades = () => {
             Buscar
           </button>
 
-          <div className="flex flex-col w-[525px] p-2">
+          <div className="flex flex-col w-auto p-2">
             {dados && (
               <>
-              
-                <ul className="bg-indigo-200 mt-2 text-center rounded-lg border-2 border-indigo-800 py-2">
+                <ul className="bg-indigo-200 mt-2 text-center rounded-lg border-2 border-indigo-800 py-2 hover:bg-slate-400">
                   <li className="font-bold underline"> CEP: {dados?.cep}</li>
-                  <li className="font-bold underline">Complemento: {dados?.complemento}</li>
-                  <li className="font-bold underline"> Logradouro: {dados?.logradouro}</li>
-                  <li className="font-bold underline">Bairro: {dados?.bairro}</li>
-                  <li className="font-bold underline">Localidade: {dados?.localidade}</li>
+                  <li className="font-bold underline">
+                    Complemento: {dados?.complemento}
+                  </li>
+                  <li className="font-bold underline">
+                    {" "}
+                    Logradouro: {dados?.logradouro}
+                  </li>
+                  <li className="font-bold underline">
+                    Bairro: {dados?.bairro}
+                  </li>
+                  <li className="font-bold underline">
+                    Localidade: {dados?.localidade}
+                  </li>
                   <li className="font-bold underline">UF: {dados?.uf}</li>
-                  <li className="font-bold underline">Localidade: {dados?.localidade}</li>
+                  <li className="font-bold underline">
+                    Localidade: {dados?.localidade}
+                  </li>
                   <li className="font-bold underline">IBGE: {dados?.ibge}</li>
                   <li className="font-bold underline">GIA: {dados?.gia}</li>
                   <li className="font-bold underline">DDD: {dados?.ddd}</li>
                   <li className="font-bold underline">SIAFI: {dados?.siafi}</li>
                 </ul>
-                
               </>
             )}
           </div>
