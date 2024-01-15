@@ -96,7 +96,7 @@ const Produtos = () => {
 
     async function requestCadastro() {
       try {
-        const response = await API.post("/produtos", formData);
+        const response = await API.post("/produtos", { formData });
         if (response.status === 200) {
           toast.success(response.data.message);
           setTimeout(() => {}, 2000);

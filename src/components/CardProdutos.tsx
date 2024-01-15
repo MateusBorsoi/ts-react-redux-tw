@@ -18,7 +18,7 @@ const CardProdutos = ({ produtos }: Props) => {
         <div className="flex flex-col space-y-4">
           <InputCustom  titulo="Teste" type="text"/>
           <Button
-            className="text-black font-bold shadow-black shadow-lg bg-indigo-600 hover:scale-105 "
+            className="text-black font-bold shadow-black shadow-lg bg-indigo-600 hover:scale-105"
             rippleColor="rgb(49, 51, 51, 0.8)"
             rippleDuration={2}
           >
@@ -52,7 +52,7 @@ const CardProdutos = ({ produtos }: Props) => {
                 </p>
 
                 <button
-                  className="text-indigo-500 text-lg font-bold hover:underline"
+                  className="text-black text-lg font-bold hover:underline bg-indigo-700 rounded-lg border-1 border-black"
                   onClick={() =>
                     AddItemToCart(
                       produto.id,
